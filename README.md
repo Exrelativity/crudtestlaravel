@@ -87,11 +87,12 @@ dataset seeded tp the database:
   }`
 
 
-## Official Documentation
+## Documentation
 
 ### Installation
 
 Clone repository
+
 
 
 install dependencies
@@ -125,14 +126,14 @@ php artisan serve
 
 ## Endpoints
 
-- GET|HEAD  api/products   
-- POST      api/products   
-- GET|HEAD  api/products/category/{category}   
-- GET|HEAD  api/products/{sku} 
-- PUT       api/products/{sku}   
-- DELETE    api/products/{sku}  
+GET|HEAD api/products     
+POST api/products     
+GET|HEAD api/products/category/{category}     
+GET|HEAD api/products/{sku}  
+PUT api/products/{sku}    
+DELETE api/products/{sku}    
 
-### Example
+### Examples
 
 - http://127.0.0.1:8000/api/products/000003
 - http://127.0.0.1:8000/api/products
