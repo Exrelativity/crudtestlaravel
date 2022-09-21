@@ -125,15 +125,15 @@ php artisan serve
 
 ## Endpoints
 
-1. GET|HEAD  api/products   
-2. POST      api/products   
-3. GET|HEAD  api/products/category/{category}   
-4. GET|HEAD  api/products/{sku} 
-5. PUT       api/products/{sku}   
-6. DELETE    api/products/{sku}  
+- GET|HEAD  api/products   
+- POST      api/products   
+- GET|HEAD  api/products/category/{category}   
+- GET|HEAD  api/products/{sku} 
+- PUT       api/products/{sku}   
+- DELETE    api/products/{sku}  
 
 ### Example
 
-1. http://127.0.0.1:8000/api/products/000003
-2. http://127.0.0.1:8000/api/products
-3. http://127.0.0.1:8000/api/products/category/insurance
+- http://127.0.0.1:8000/api/products/000003
+- http://127.0.0.1:8000/api/products
+- http://127.0.0.1:8000/api/products/category/insurance
