@@ -1,66 +1,131 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Api Demo 🏝️
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Introduction
 
-## About Laravel
+A simple laravel Api following this [conditions]
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Conditions 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  
+1. [x] A user can create an account, login to their dashboard, and reset their forgotten password. This authentication system should be a tokenized system that will expire at a certain time range.
 
-## Learning Laravel
+2. [x] A user can have many products and many products can only belong to one user demonstrating proper use of ( one-to-many ) relationships.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3. [x] Users products should have [ NAME, DESCRIPTION, QUANTITY, UNIT PRICE, AMOUNT_SOLD etc ] as attributes. ( Use appropriate dataType for all fields ).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+4. [x] Products can be updated and deleted by the owner. A user is not allowed to update or delete products that don't belong to them.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+5. [x] Users should be listed with their Products in a DESC order.
 
-## Laravel Sponsors
+6. [x] Products should be listed with pagination and in DESC order.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+7. [x] Create a github Repository and push your code and share this repository when done.
 
-### Premium Partners
+8. [x] Demonstrate proper documentation standards by documenting your APIs using postman.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+## Documentation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Installation
 
-## Code of Conduct
+Clone repository
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+install dependencies
+```bash
 
-## License
+php composer.phar install
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+
+create a database called `crudtestlaravel` on your mysql server
+
+Run migrations
+```bash
+# Run migrations
+php artisan migrate
+
+```
+
+Seed Database 
+```bash
+# Run migrations
+php artisan db:seed
+
+```
+
+Start your application
+```bash
+# Serve the application...
+php artisan serve
+```
+
+## Endpoints
+
+  GET|HEAD  api/products   
+  POST      api/products   
+  GET|HEAD  api/products/{id}   
+  PUT       api/products/{id}   
+  DELETE    api/products/{id}   
+  GET|HEAD  api/user    
+  GET|HEAD  api/users   
+  GET|HEAD  api/{userId}/products   
+  POST      email/verification-notification   
+  POST      forgot-password   
+  POST      login   
+  POST      logout   
+  POST      register   
+  POST      reset-password   
+  GET|HEAD  sanctum/csrf-cookie   
+  GET|HEAD  verify-email/{id}/{hash}   
+
+                                     
+
+
+product added by a single user  
+GET|HEAD api/{userId}/products  
+
+### Examples
+
+- http://127.0.0.1:8000/api/products/1
+- http://127.0.0.1:8000/api/products
+
+
+### data seeded to the database
+
+products = [
+            {
+                'name' : "name1",
+                'description' : 'description1',
+                'quantity' : 5,
+                'unitPrice' : 10,
+                'amountSold' : 5,
+                'userId' : 1
+            },
+            {
+                'name' : "name2",
+                'description' : 'description2',
+                'quantity' : 6,
+                'unitPrice' : 11,
+                'amountSold' : 6,
+                'userId' : 1
+            },
+            {
+                'name' : "name3",
+                'description' : 'description3',
+                'quantity' : 10,
+                'unitPrice' : 10,
+                'amountSold' : 4,
+                'userId' : 2
+            },
+            {
+                'name' : "name4",
+                'description' : 'description4',
+                'quantity' : 11,
+                'unitPrice' : 17,
+                'amountSold' : 4,
+                'userId' : 2
+            },
+        ];
