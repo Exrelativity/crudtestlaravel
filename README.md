@@ -51,7 +51,7 @@ php artisan migrate
 
 Seed Database 
 ```bash
-# Run migrations
+# seed the database
 php artisan db:seed
 
 ```
@@ -79,7 +79,7 @@ php artisan serve
   POST      logout   
   POST      register   
   POST      reset-password   
-  GET|HEAD  sanctum/csrf-cookie             //use link to get token 
+  GET|HEAD  sanctum/csrf-cookie   
   GET|HEAD  verify-email/{id}/{hash}   
 
                                      
@@ -97,21 +97,20 @@ GET|HEAD api/{userId}/products
 ### data seeded to the database
 Users = [
             {
-                'name' : "example1",
+                'name' : 'example1',
                 'email' : 'example1@example.com',
                 'password' : password,
             },
             {
-                'name' : "example2",
+                'name' : 'example2',
                 'email' : 'example2@example.com',
                 'password' : password,
             },
 ]
 
-
 products = [
             {
-                'name' : "name1",
+                'name' : 'name1',
                 'description' : 'description1',
                 'quantity' : 5,
                 'unitPrice' : 10,
@@ -119,7 +118,7 @@ products = [
                 'userId' : 1
             },
             {
-                'name' : "name2",
+                'name' : 'name2',
                 'description' : 'description2',
                 'quantity' : 6,
                 'unitPrice' : 11,
@@ -127,7 +126,7 @@ products = [
                 'userId' : 1
             },
             {
-                'name' : "name3",
+                'name' : 'name3',
                 'description' : 'description3',
                 'quantity' : 10,
                 'unitPrice' : 10,
@@ -135,7 +134,7 @@ products = [
                 'userId' : 2
             },
             {
-                'name' : "name4",
+                'name' : 'name4',
                 'description' : 'description4',
                 'quantity' : 11,
                 'unitPrice' : 17,
@@ -143,18 +142,22 @@ products = [
                 'userId' : 2
             },
         ];
-
+  
 ## Working with postman for development
+  
+### To access web route  
 
-### To access web route
 please run this command copy response from terminal and paste to Pre-request script on postman  
-command format ...dev:postman {guard} {user?}
+command format ...dev:postman {guard} {user?}  
+  
 ```
 php artisan dev:postman web
 ```
 
 ### To access api route
+  
 please run this command copy response from terminal and paste as Bear token under Authorization on postman  
+  
 ```
 php artisan dev:postman api 1
 ```

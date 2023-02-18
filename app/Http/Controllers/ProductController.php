@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
         
     public function index()
     {
-        $data = collect(Product::all()->orderByDesc('id')->paginate(15));
+        $data = DB::table('products')->orderBy('id', 'desc')->paginate(15);
         return response()->json($data, 200);
     }
    
