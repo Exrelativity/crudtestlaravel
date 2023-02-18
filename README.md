@@ -63,7 +63,7 @@ php artisan serve
 ```
 
 ## Endpoints
-
+### api endpoints
   GET|HEAD  api/products   
   POST      api/products   
   GET|HEAD  api/products/{id}   
@@ -72,13 +72,14 @@ php artisan serve
   GET|HEAD  api/user    
   GET|HEAD  api/users   
   GET|HEAD  api/{userId}/products   
+### web endpoints
   POST      email/verification-notification   
   POST      forgot-password   
   POST      login   
   POST      logout   
   POST      register   
   POST      reset-password   
-  GET|HEAD  sanctum/csrf-cookie   
+  GET|HEAD  sanctum/csrf-cookie             //use link to get token 
   GET|HEAD  verify-email/{id}/{hash}   
 
                                      
@@ -94,6 +95,19 @@ GET|HEAD api/{userId}/products
 
 
 ### data seeded to the database
+Users = [
+            {
+                'name' : "example1",
+                'email' : 'example1@example.com',
+                'password' : password,
+            },
+            {
+                'name' : "example2",
+                'email' : 'example2@example.com',
+                'password' : password,
+            },
+]
+
 
 products = [
             {
@@ -129,3 +143,19 @@ products = [
                 'userId' : 2
             },
         ];
+
+## Working with postman for development
+
+### To access web route
+please run this command copy response from terminal and paste to Pre-request script on postman  
+command format ...dev:postman {guard} {user?}
+```
+php artisan dev:postman web
+```
+
+### To access api route
+please run this command copy response from terminal and paste as Bear token under Authorization on postman  
+```
+php artisan dev:postman api 1
+```
+the above command generates a token for user with id 1

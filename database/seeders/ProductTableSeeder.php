@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class ProductTableSeeder extends Seeder
 {
@@ -61,6 +63,41 @@ class ProductTableSeeder extends Seeder
                 'unitPrice' => $products[$x]['unitPrice'],
                 'amountSold' => $products[$x]['amountSold'],
                 'userId' => $products[$x]['userId']
+            ]);
+        }
+    }
+}
+
+class UserTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //
+        $users = [
+            array(
+                'name' => "example1",
+                'email' => 'example1@example.com',
+                'password' => Hash::make('password')
+            ),
+            array(
+                'name' => "example2",
+                'email' => 'example2@example.com',
+                'password' => Hash::make('password')
+            )
+        ];
+
+        // And now, let's create a few articles in our database
+        $arrlength = count($users);
+        for ($x = 0; $x < $arrlength; $x++) {
+            User::create([
+                'name' => $users[$x]['name'],
+                'email' => $users[$x]['email'],
+                'password' => $users[$x]['password']
             ]);
         }
     }
