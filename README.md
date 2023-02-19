@@ -156,7 +156,7 @@ php artisan dev:postman web
 
 ### To access api route
   
-please run this command copy response from terminal and paste as Bear token under Authorization on postman  
+please run this command copy response from terminal and paste as Bearer token under Authorization on postman  
   
 ```
 php artisan dev:postman api 1
