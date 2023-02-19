@@ -178,4 +178,4 @@ the above command generates a token for user with id 1
 
 ## working without postman  
  
-You can also access this endpoint on a browser.
+...

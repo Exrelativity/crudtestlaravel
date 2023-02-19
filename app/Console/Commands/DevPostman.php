@@ -39,7 +39,7 @@ class DevPostman extends Command
 
         Route::get('/dev-login', function () use ($user) {
             Auth::login($user);
-            return response("Hello mevelix.");
+            return response("Hello User.");
         })->middleware('web');
 
         $request = Request::create('/dev-login');
