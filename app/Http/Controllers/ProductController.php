@@ -76,7 +76,7 @@ class ProductController extends Controller
     }
 
     public function productByUser(Request $request, $userId){
-        $data = collect(User::where('id', $userId)->get()->products);
+        $data = User::where('id', $userId)->with('products')->get();
         return response()->json($data, 200);
     }
 }
