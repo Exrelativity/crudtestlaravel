@@ -64,15 +64,28 @@ php artisan serve
 
 ## Endpoints
 ### api endpoints
+
+  POST      api/email/verification-notification   
+  POST      api/forgot-password   
+  POST      api/login   
+  POST      api/logout   
+  POST      api/register   
+  POST      api/reset-password   
+  GET|HEAD  api/user   
+  GET|HEAD  api/users   
+  GET|HEAD  api/verify-email/{id}/{hash}   
+  GET|HEAD  api/{userId}/products  
+
+#### Endpoints for Products
+
   GET|HEAD  api/products   
   POST      api/products   
   GET|HEAD  api/products/{id}   
   PUT       api/products/{id}   
   DELETE    api/products/{id}   
-  GET|HEAD  api/user    
-  GET|HEAD  api/users   
-  GET|HEAD  api/{userId}/products   
+  
 ### web endpoints
+
   POST      email/verification-notification   
   POST      forgot-password   
   POST      login   
@@ -162,3 +175,7 @@ please run this command copy response from terminal and paste as Bearer token un
 php artisan dev:postman api 1
 ```
 the above command generates a token for user with id 1
+
+## working without postman  
+ 
+You can also access this endpoint on a browser.
