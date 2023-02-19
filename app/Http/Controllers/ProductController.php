@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     public function show(Request $id)
     {
-        $data = collect(Product::where('id', $id)->get());
+        $data = DB::table('products')->where('id', $id);
         return response()->json($data, 200);
     }
 
