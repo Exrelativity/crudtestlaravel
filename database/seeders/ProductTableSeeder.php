@@ -82,11 +82,13 @@ class UserTableSeeder extends Seeder
             array(
                 'name' => "example1",
                 'email' => 'example1@example.com',
+                'email_verified_at' => now(),
                 'password' => Hash::make('password')
             ),
             array(
                 'name' => "example2",
                 'email' => 'example2@example.com',
+                'email_verified_at' => now(),
                 'password' => Hash::make('password')
             )
         ];
@@ -97,6 +99,7 @@ class UserTableSeeder extends Seeder
             User::create([
                 'name' => $users[$x]['name'],
                 'email' => $users[$x]['email'],
+                'email_verified_at' => $users[$x]['email_verified_at'],
                 'password' => $users[$x]['password']
             ]);
         }

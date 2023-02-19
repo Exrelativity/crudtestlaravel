@@ -38,6 +38,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return response()->json("User has loged out", 200);
+        return response()->json("User has logged out", 200);
     }
 }
