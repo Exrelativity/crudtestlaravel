@@ -12,7 +12,7 @@ class UserController extends Controller
         
     public function index(Request $request)
     {
-        $data = DB::table('users')->orderBy('id', 'desc')->paginate(15);
+        $data = User::orderBy('users.id', 'desc')->with("products")->paginate(15);
         return response()->json($data, 200);
     }
    
