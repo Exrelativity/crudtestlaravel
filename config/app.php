@@ -197,6 +197,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Subcriptions package for graphql
+         * 
+         */
+        \Nuwave\Lighthouse\Subscriptions\SubscriptionServiceProvider::class,
     ],
 
     /*

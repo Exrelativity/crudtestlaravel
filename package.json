@@ -1,0 +1,28 @@
+{
+  "name": "crudtestlaravel",
+  "version": "1.0.0",
+  "description": "## Introduction",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Exrelativity/crudtestlaravel.git"
+  },
+  "author": "Exrelativity",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Exrelativity/crudtestlaravel/issues"
+  },
+  "homepage": "https://github.com/Exrelativity/crudtestlaravel#readme",
+  "dependencies": {
+    "@graphql-cli/init": "^4.1.0",
+    "graphql": "^16.6.0",
+    "graphql-cli": "^4.1.0",
+    "tslib": "^2.5.0"
+  }
+}

@@ -1,0 +1,238 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+"Indicates what fields are available at the top level of a query operation."
+type Query {
+    "Find a single user by an identifying attribute."
+    user(
+      "Search by primary key."
+      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+
+      "Search by email address."
+      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+    ): UserResponse
+
+    "list all users."
+    users: UsersResponse!
+
+    "list all products."
+    products: ProductsResponse!
+
+    "find a single product by its ID."
+    product( 
+      id: ID! 
+      ): ProductResponse!
+}
+
+
+type Mutation {
+  user(input: createUserInput! @spread ): UserResponse!
+  updateUser(input: updateUserInput! @spread ): UserResponse!
+  deleteUser(id:ID!): UserResponse! 
+  product(input: createProductInput! @spread ): ProductResponse! 
+  updateProduct(input: updateProductInput! @spread ): ProductResponse!
+  deleteProduct(id:ID!): ProductResponse!
+}
+
+
+"Account of a person who utilizes this application."
+type User {
+    "Unique primary key."
+    id: ID!
+
+    "Non-unique name."
+    name: String!
+
+    "Unique email address."
+    email: String!
+
+    "When the email was verified."
+    email_verified_at: DateTime
+
+    "When the account was created."
+    created_at: DateTime!
+
+    "When the account was last updated."
+    updated_at: DateTime!
+
+    "products created by the user"
+    products: [Product!]! @hasMany
+}
+
+input createUserInput {
+    
+    "Non-unique name."
+    name: String!
+
+    "Unique email address."
+    email: String!
+
+    "When the email was verified."
+    email_verified_at: DateTime
+    
+}
+
+input updateUserInput {
+    "Unique primary key."
+    id: ID
+    
+    "Non-unique name."
+    name: String!
+
+    "Unique email address."
+    email: String!
+
+    "Users login password"
+    password: String
+
+    "When the email was verified."
+    email_verified_at: DateTime
+    
+}
+
+type Product {
+    "Unique primary key."
+    id: ID!
+
+    "Non-unique name."
+    name: String!
+
+    "non unique description for the product."
+    description: String!
+
+    "quantity of product."
+    quantity: Int!
+
+    "price of product."
+    unitPrice: Int!
+
+    "amount sold out in product."
+    amountSold: Int!
+
+    "UserId who owns the product."
+    userId: Int!
+
+    "When the account was created."
+    created_at: DateTime!
+
+    "When the account was last updated."
+    updated_at: DateTime!
+
+    owner: User @belongsTo
+}
+
+
+input createProductInput {
+   
+
+    "Non-unique name."
+    name: String!
+
+    "non unique description for the product."
+    description: String!
+
+    "quantity of product."
+    quantity: Int!
+
+    "price of product."
+    unitPrice: Int!
+
+    "amount sold out in product."
+    amountSold: Int!
+
+    "UserId who owns the product."
+    userId: Int!
+
+}
+
+
+input updateProductInput {
+    "Unique primary key."
+    id: ID
+
+    "Non-unique name."
+    name: String!
+
+    "non unique description for the product."
+    description: String!
+
+    "quantity of product."
+    quantity: Int!
+
+    "price of product."
+    unitPrice: Int!
+
+    "amount sold out in product."
+    amountSold: Int!
+
+    "UserId who owns the product."
+    userId: Int!
+
+}
+
+interface Response {
+  "status of the request"
+  status:Int
+
+  "error message for the request"
+  error:String 
+
+  "message for the request"
+  message:String
+}
+
+type UserResponse implements Response {
+
+  "status of the request"
+  status:Int
+
+  "error message for the request"
+  error:String 
+
+  "message for the request"
+  message:String
+
+  user: User
+}
+
+type UsersResponse implements Response {
+
+  "status of the request"
+  status:Int
+
+  "error message for the request"
+  error:String 
+
+  "message for the request"
+  message:String
+
+  users:[User]
+}
+
+type ProductResponse implements Response {
+
+  "status of the request"
+  status:Int
+
+  "error message for the request"
+  error:String 
+
+  "message for the request"
+  message:String
+
+  product: Product
+}
+
+type ProductsResponse implements Response {
+
+  "status of the request"
+  status:Int
+
+  "error message for the request"
+  error:String 
+
+  "message for the request"
+  message:String
+
+  products: [Product]
+}
