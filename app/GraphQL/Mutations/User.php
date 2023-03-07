@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Mutations;
 use App\Models\User as UserModel;
+use Illuminate\Support\Facades\Hash;
 
 final class User
 {
@@ -15,7 +16,7 @@ final class User
         $id = $args['id'];
         $name = $args['name'];
         $email = $args['email'];
-        $password = $args['password'];
+        $password = Hash::make($args['password']);
         $email_verified_at = $args['email_verified_at'];
 
         if (isset($id)){ 
