@@ -10,28 +10,28 @@ type Query {
 
       "Search by email address."
       email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): UserResponse
+    ): UserResponse @field(resolver: "App\\GraphQL\\Queries\\User")
 
     "list all users."
-    users: UsersResponse!
+    users: UsersResponse! @field(resolver: "App\\GraphQL\\Queries\\Users")
 
     "list all products."
-    products: ProductsResponse!
+    products: ProductsResponse! @field(resolver: "App\\GraphQL\\Queries\\Products")
 
     "find a single product by its ID."
     product( 
       id: ID! 
-      ): ProductResponse!
+      ): ProductResponse! @field(resolver: "App\\GraphQL\\Queries\\Login")
 }
 
 
 type Mutation {
-  user(input: createUserInput! @spread ): UserResponse!
-  updateUser(input: updateUserInput! @spread ): UserResponse!
-  deleteUser(id:ID!): UserResponse! 
-  product(input: createProductInput! @spread ): ProductResponse! 
-  updateProduct(input: updateProductInput! @spread ): ProductResponse!
-  deleteProduct(id:ID!): ProductResponse!
+  user(input: createUserInput! @spread ): UserResponse! @field(resolver: "App\\GraphQL\\Mutations\\User")
+  updateUser(input: updateUserInput! @spread ): UserResponse! @field(resolver: "App\\GraphQL\\Mutations\\UpdateUser")
+  deleteUser(id:ID!): UserResponse! @field(resolver: "App\\GraphQL\\Mutations\\DeleteUser")
+  product(input: createProductInput! @spread ): ProductResponse! @field(resolver: "App\\GraphQL\\Mutations\\Product")
+  updateProduct(input: updateProductInput! @spread ): ProductResponse! @field(resolver: "App\\GraphQL\\Mutations\\UpdateProduct")
+  deleteProduct(id:ID!): ProductResponse! @field(resolver: "App\\GraphQL\\Mutations\\DeleteProduct")
 }
 
 
